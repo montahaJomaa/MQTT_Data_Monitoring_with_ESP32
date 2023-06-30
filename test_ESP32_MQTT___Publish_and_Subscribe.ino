@@ -4,11 +4,11 @@
 #include <Adafruit_BME280.h>
 #include <Adafruit_Sensor.h>
 
-// Replace the next variables with your SSID/Password combination
+// Network credentials
 const char* ssid = "xxxxx";
 const char* password = "xxxxx";
 
-// Add your MQTT Broker IP address, example:
+// Add the MQTT Broker IP address
 const char* mqtt_server = "xxxxx";
 
 WiFiClient espClient;
@@ -29,13 +29,7 @@ const int ledPin = 2;
 
 void setup() {
   Serial.begin(115200);
-  // default settings
-  // (you can also pass in a Wire library object like &Wire2)
-  //status = bme.begin();  
-  //if (!bme.begin(0x76)) { //0x76?
-    //Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    //while (1);
-  //}
+  
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
